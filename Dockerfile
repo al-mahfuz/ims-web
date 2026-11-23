@@ -40,5 +40,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
 
+# Same non-root UID the base image already uses; Blocks Release requires it to be declared explicitly.
+USER 101
+
 # HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 #   CMD wget -qO- http://localhost:8080/ || exit 1
